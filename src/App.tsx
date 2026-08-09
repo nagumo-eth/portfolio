@@ -21,8 +21,24 @@ import { useScrolled } from './hooks/useScrolled'
 const NAV_LINKS = [
   { label: 'Projects', href: '#projects' },
   { label: 'About', href: '#about' },
+  { label: 'Stack', href: '#stack' },
   { label: 'Education', href: '#education' },
   { label: 'Contact', href: '#contact' },
+]
+
+const STACK = [
+  {
+    category: 'Frontend',
+    items: ['React', 'TypeScript', 'Vite', 'Tailwind CSS'],
+  },
+  {
+    category: 'Backend',
+    items: ['Node.js', 'Supabase', 'OpenAI Whisper API'],
+  },
+  {
+    category: 'Infrastructure',
+    items: ['Vercel (CI/CD)', 'Auth (Clerk / Supabase)', 'PayPal'],
+  },
 ]
 
 const EDUCATION = [
@@ -237,7 +253,40 @@ function App() {
         </div>
       </section>
 
-      <section id="education" className="border-t border-white/10 bg-neutral-950 px-6 py-24 sm:px-10 sm:py-32 lg:px-16 lg:py-40">
+      <section id="stack" className="border-t border-white/10 bg-neutral-950 px-6 py-24 sm:px-10 sm:py-32 lg:px-16 lg:py-40">
+        <div className="mx-auto max-w-5xl">
+          <Reveal>
+            <Kicker>Stack</Kicker>
+          </Reveal>
+          <Reveal delay={100}>
+            <h2 className="mt-4 font-podium text-4xl uppercase leading-[0.95] tracking-tight text-white sm:text-5xl lg:text-6xl">
+              Tools I Work With
+            </h2>
+          </Reveal>
+
+          <div className="mt-12 grid gap-10 sm:grid-cols-3">
+            {STACK.map((group, i) => (
+              <Reveal key={group.category} delay={200 + i * 120}>
+                <h3 className="font-inter text-xs uppercase tracking-widest text-white/40">
+                  {group.category}
+                </h3>
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {group.items.map((item) => (
+                    <span
+                      key={item}
+                      className="border border-white/10 px-3 py-1.5 font-inter text-xs text-white/70 transition hover:border-white/30 hover:text-white"
+                    >
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="education" className="border-t border-white/10 bg-black px-6 py-24 sm:px-10 sm:py-32 lg:px-16 lg:py-40">
         <div className="mx-auto max-w-5xl">
           <Reveal>
             <Kicker>Education</Kicker>
