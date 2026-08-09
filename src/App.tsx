@@ -106,6 +106,11 @@ function App() {
 
   return (
     <div className="bg-black">
+      <div className="fixed inset-0 z-0 bg-black">
+        <div className="absolute inset-0 opacity-[0.15] [background-image:linear-gradient(to_right,rgba(255,255,255,0.15)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.15)_1px,transparent_1px)] [background-size:64px_64px]" />
+        <div className="grain pointer-events-none absolute inset-0 opacity-40" />
+      </div>
+
       <CustomCursor />
       <ScrollProgress />
 
@@ -155,11 +160,9 @@ function App() {
         </button>
       </nav>
 
-      <section className="relative min-h-screen w-full overflow-hidden bg-black">
+      <section className="relative min-h-screen w-full overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_0%,rgba(255,255,255,0.10),transparent_70%)]" />
-        <div className="absolute inset-0 opacity-[0.15] [background-image:linear-gradient(to_right,rgba(255,255,255,0.15)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.15)_1px,transparent_1px)] [background-size:64px_64px] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_0%,black_40%,transparent_100%)]" />
         <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
-        <div className="grain pointer-events-none absolute inset-0 opacity-40" />
 
         <div className="relative z-10 flex min-h-screen flex-col justify-center px-6 pb-10 pt-24 sm:px-10 lg:px-16 lg:pt-28">
           <div className="max-w-3xl">
@@ -170,7 +173,7 @@ function App() {
                 </span>
               </div>
 
-              <h1 className="animate-fade-up-delay-1 font-podium uppercase leading-[0.92] tracking-tight text-white">
+              <h1 className="animate-fade-up-delay-1 font-podium font-bold uppercase leading-[0.92] tracking-tight text-white">
                 <span className="block text-[clamp(2.4rem,6.5vw,5.5rem)]">Design.</span>
                 <span className="block text-[clamp(2.4rem,6.5vw,5.5rem)]">Develop.</span>
                 <span className="block text-[clamp(2.4rem,6.5vw,5.5rem)]">Deploy.</span>
@@ -230,13 +233,13 @@ function App() {
         </a>
       </section>
 
-      <section id="about" className="border-t border-white/10 bg-black px-6 py-24 sm:px-10 sm:py-32 lg:px-16 lg:py-40">
+      <section id="about" className="relative border-t border-white/10 px-6 py-24 sm:px-10 sm:py-32 lg:px-16 lg:py-40">
         <div className="mx-auto max-w-4xl">
           <Reveal>
             <Kicker>About</Kicker>
           </Reveal>
           <Reveal delay={100}>
-            <h2 className="mt-4 font-podium text-4xl uppercase leading-[0.95] tracking-tight text-white sm:text-5xl lg:text-6xl">
+            <h2 className="mt-4 font-podium text-4xl font-bold uppercase leading-[0.95] tracking-tight text-white sm:text-5xl lg:text-6xl">
               Developer &amp; Social Worker
             </h2>
           </Reveal>
@@ -253,13 +256,13 @@ function App() {
         </div>
       </section>
 
-      <section id="stack" className="border-t border-white/10 bg-neutral-950 px-6 py-24 sm:px-10 sm:py-32 lg:px-16 lg:py-40">
+      <section id="stack" className="border-t border-white/10 bg-white/[0.02] px-6 py-24 sm:px-10 sm:py-32 lg:px-16 lg:py-40">
         <div className="mx-auto max-w-5xl">
           <Reveal>
             <Kicker>Stack</Kicker>
           </Reveal>
           <Reveal delay={100}>
-            <h2 className="mt-4 font-podium text-4xl uppercase leading-[0.95] tracking-tight text-white sm:text-5xl lg:text-6xl">
+            <h2 className="mt-4 font-podium text-4xl font-bold uppercase leading-[0.95] tracking-tight text-white sm:text-5xl lg:text-6xl">
               Tools I Work With
             </h2>
           </Reveal>
@@ -286,13 +289,13 @@ function App() {
         </div>
       </section>
 
-      <section id="education" className="border-t border-white/10 bg-black px-6 py-24 sm:px-10 sm:py-32 lg:px-16 lg:py-40">
+      <section id="education" className="border-t border-white/10 px-6 py-24 sm:px-10 sm:py-32 lg:px-16 lg:py-40">
         <div className="mx-auto max-w-5xl">
           <Reveal>
             <Kicker>Education</Kicker>
           </Reveal>
           <Reveal delay={100}>
-            <h2 className="mt-4 font-podium text-4xl uppercase leading-[0.95] tracking-tight text-white sm:text-5xl lg:text-6xl">
+            <h2 className="mt-4 font-podium text-4xl font-bold uppercase leading-[0.95] tracking-tight text-white sm:text-5xl lg:text-6xl">
               Academic Background
             </h2>
           </Reveal>
@@ -301,7 +304,7 @@ function App() {
             {EDUCATION.map((edu, i) => (
               <Reveal key={edu.degree} delay={200 + i * 120}>
                 <div className="relative overflow-hidden border border-white/10 p-6 sm:p-8">
-                  <span className="pointer-events-none absolute -right-2 -top-8 select-none font-podium text-[6rem] leading-none text-white/[0.04] sm:text-[8rem]">
+                  <span className="pointer-events-none absolute -right-2 -top-8 select-none font-podium text-[6rem] font-bold leading-none text-white/[0.04] sm:text-[8rem]">
                     {String(i + 1).padStart(2, '0')}
                   </span>
                   <GraduationCap className="h-8 w-8 text-white/60" />
@@ -318,13 +321,13 @@ function App() {
         </div>
       </section>
 
-      <section id="projects" className="border-t border-white/10 bg-black px-6 py-24 sm:px-10 sm:py-32 lg:px-16 lg:py-40">
+      <section id="projects" className="border-t border-white/10 px-6 py-24 sm:px-10 sm:py-32 lg:px-16 lg:py-40">
         <div className="mx-auto max-w-6xl">
           <Reveal>
             <Kicker>Projects</Kicker>
           </Reveal>
           <Reveal delay={100}>
-            <h2 className="mt-4 font-podium text-4xl uppercase leading-[0.95] tracking-tight text-white sm:text-5xl lg:text-6xl">
+            <h2 className="mt-4 font-podium text-4xl font-bold uppercase leading-[0.95] tracking-tight text-white sm:text-5xl lg:text-6xl">
               Selected Work
             </h2>
           </Reveal>
@@ -349,7 +352,7 @@ function App() {
                   </div>
 
                   <div className="flex-1">
-                    <h3 className="font-podium text-2xl uppercase tracking-tight text-white sm:text-3xl lg:text-4xl">
+                    <h3 className="font-podium text-2xl font-bold uppercase tracking-tight text-white sm:text-3xl lg:text-4xl">
                       {project.title}
                     </h3>
                     <p className="mt-2 font-inter text-xs uppercase tracking-widest text-white/40">
@@ -394,13 +397,13 @@ function App() {
         </div>
       </section>
 
-      <section id="contact" className="border-t border-white/10 bg-neutral-950 px-6 py-24 text-center sm:px-10 sm:py-32 lg:px-16 lg:py-40">
+      <section id="contact" className="border-t border-white/10 bg-white/[0.02] px-6 py-24 text-center sm:px-10 sm:py-32 lg:px-16 lg:py-40">
         <div className="mx-auto max-w-2xl">
           <Reveal className="flex justify-center">
             <Kicker>Contact</Kicker>
           </Reveal>
           <Reveal delay={100}>
-            <h2 className="mt-4 font-podium text-4xl uppercase leading-[0.95] tracking-tight text-white sm:text-5xl lg:text-6xl">
+            <h2 className="mt-4 font-podium text-4xl font-bold uppercase leading-[0.95] tracking-tight text-white sm:text-5xl lg:text-6xl">
               Let's Work Together
             </h2>
           </Reveal>
@@ -424,7 +427,7 @@ function App() {
         </div>
       </section>
 
-      <footer className="border-t border-white/10 bg-black px-6 py-8 text-center font-inter text-xs text-white/40 sm:px-10 lg:px-16">
+      <footer className="border-t border-white/10 px-6 py-8 text-center font-inter text-xs text-white/40 sm:px-10 lg:px-16">
         © {new Date().getFullYear()} Mark Motol. All rights reserved.
       </footer>
 
@@ -453,7 +456,7 @@ function App() {
                 key={link.label}
                 href={link.href}
                 onClick={() => setMenuOpen(false)}
-                className="font-podium text-4xl uppercase text-white transition-all duration-500 sm:text-5xl"
+                className="font-podium text-4xl font-bold uppercase text-white transition-all duration-500 sm:text-5xl"
                 style={{
                   transitionDelay: `${i * 80 + 100}ms`,
                   opacity: menuOpen ? 1 : 0,

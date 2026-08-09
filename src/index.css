@@ -35,7 +35,7 @@ body.cursor-none * {
 
 @layer utilities {
   .font-podium {
-    font-family: 'FSP DEMO - PODIUM Sharp 4.11', sans-serif;
+    font-family: 'Inter', sans-serif;
   }
 
   @keyframes fade-up {
