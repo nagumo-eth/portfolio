@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        podium: ['Inter', 'sans-serif'],
+        podium: ['Space Grotesk', 'sans-serif'],
         inter: ['Inter', 'sans-serif'],
       },
     },

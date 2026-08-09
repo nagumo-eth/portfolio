@@ -35,7 +35,7 @@ body.cursor-none * {
 
 @layer utilities {
   .font-podium {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Space Grotesk', sans-serif;
   }
 
   @keyframes fade-up {
