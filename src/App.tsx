@@ -33,7 +33,7 @@ const STACK = [
   },
   {
     category: 'Backend',
-    items: ['Node.js', 'Supabase', 'OpenAI Whisper API'],
+    items: ['Node.js', 'PHP', 'Laravel', 'Supabase', 'MySQL', 'OpenAI Whisper API'],
   },
   {
     category: 'Infrastructure',
