@@ -10,6 +10,7 @@ import {
   GraduationCap,
   Mail,
   MapPin,
+  Receipt,
   X,
 } from 'lucide-react'
 import Reveal from './components/Reveal'
@@ -33,11 +34,11 @@ const STACK = [
   },
   {
     category: 'Backend',
-    items: ['Node.js', 'PHP', 'Laravel', 'Supabase', 'MySQL', 'OpenAI Whisper API'],
+    items: ['Node.js', 'PHP', 'Laravel', 'Supabase', 'MySQL', 'OpenAI Whisper API', 'Claude API', 'n8n'],
   },
   {
     category: 'Infrastructure',
-    items: ['Vercel (CI/CD)', 'Auth (Clerk / Supabase)', 'PayPal'],
+    items: ['Vercel (CI/CD)', 'Auth (Clerk / Supabase)', 'PayPal', 'Google Workspace APIs'],
   },
 ]
 
@@ -80,6 +81,14 @@ const PROJECTS = [
     description:
       'An AI-powered platform that turns raw field notes into agency-ready social work reports -- SCSRs, case progress reports, and DSWD/4Ps-compliant documentation -- with trauma-informed language built in.',
     link: 'https://csrai.co',
+  },
+  {
+    icon: Receipt,
+    title: 'Order-to-Invoice Kit',
+    subtitle: 'n8n automation for small online businesses',
+    description:
+      'Five n8n workflows that read emailed order PDFs with AI, log them to Google Sheets, generate numbered PDF invoices with one-click approval, send overdue payment reminders, and alert on failures. Sold on Gumroad.',
+    link: 'https://gumroad.com/l/vzvksn',
   },
   {
     icon: ClipboardList,
