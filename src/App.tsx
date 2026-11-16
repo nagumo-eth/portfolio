@@ -1,15 +1,12 @@
 import { useState } from 'react'
 import {
   ArrowUpRight,
-  Award,
-  Briefcase,
   Car,
   ChevronDown,
   ClipboardList,
   Code2,
   GraduationCap,
   Mail,
-  MapPin,
   Receipt,
   X,
 } from 'lucide-react'
@@ -19,9 +16,21 @@ import Magnetic from './components/Magnetic'
 import ScrollProgress from './components/ScrollProgress'
 import { useScrolled } from './hooks/useScrolled'
 
+// lucide-react 1.x no longer ships brand logos, so the LinkedIn mark is inline.
+function Linkedin({ className = '' }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className={className}>
+      <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z" />
+    </svg>
+  )
+}
+
+const LINKEDIN = 'https://www.linkedin.com/in/mark-jonathan-motol-268931430/'
+
 const NAV_LINKS = [
   { label: 'Projects', href: '#projects' },
   { label: 'About', href: '#about' },
+  { label: 'Experience', href: '#experience' },
   { label: 'Stack', href: '#stack' },
   { label: 'Education', href: '#education' },
   { label: 'Contact', href: '#contact' },
@@ -53,19 +62,36 @@ const EDUCATION = [
   },
   {
     degree: 'Master of Social Work',
-    detail: '',
+    detail: 'Completed · Graduation February 2027',
+  },
+]
+
+const EXPERIENCE = [
+  {
+    role: 'Freelance Full-Stack Developer',
+    period: '2026 – Present',
+    detail:
+      'Design, build and deploy web apps and automations end to end, from React and Supabase apps to n8n workflows with AI document processing.',
+  },
+  {
+    role: 'Financial Advisor',
+    period: 'Present',
+    detail: 'Help individuals and families plan for protection, savings and long-term financial goals.',
+  },
+  {
+    role: 'Project Coordinator',
+    period: '11 years',
+    detail:
+      'Coordinated community development projects in the field, working with local partners, community associations and the families they serve.',
+  },
+  {
+    role: 'Supervisor & Training Specialist, Telecommunications',
+    period: 'Earlier career',
+    detail: 'Mapping and mall-kiosk supervisor, then trained newly hired sales agents.',
   },
 ]
 
 const PROJECTS = [
-  {
-    icon: MapPin,
-    title: 'Smart Livelihood Monitoring Platform',
-    subtitle: 'with Geographic Information System Integration',
-    description:
-      'A GIS-powered platform for tracking, mapping, and managing livelihood programs across communities.',
-    link: null,
-  },
   {
     icon: Car,
     title: 'Sakay App',
@@ -73,14 +99,6 @@ const PROJECTS = [
     description:
       'A tricycle ride-hailing app connecting commuters with drivers for safer, more convenient trips.',
     link: 'https://safetrike-2e135.web.app/',
-  },
-  {
-    icon: Briefcase,
-    title: 'csrai',
-    subtitle: 'AI case report generator for social workers',
-    description:
-      'An AI-powered platform that turns raw field notes into agency-ready social work reports -- SCSRs, case progress reports, and DSWD/4Ps-compliant documentation -- with trauma-informed language built in.',
-    link: 'https://csrai.co',
   },
   {
     icon: Receipt,
@@ -102,7 +120,7 @@ const PROJECTS = [
 
 function Kicker({ children }: { children: string }) {
   return (
-    <span className="inline-flex items-center gap-3 font-inter text-xs uppercase tracking-[0.3em] text-white/50">
+    <span className="inline-flex items-center gap-3 font-inter text-xs uppercase tracking-[0.3em] text-white/60">
       <span className="h-px w-8 bg-white/30" />
       {children}
     </span>
@@ -189,42 +207,43 @@ function App() {
               </h1>
 
               <p className="animate-fade-up-delay-2 mt-5 max-w-md font-inter text-sm leading-relaxed text-white/70 sm:text-base lg:mt-6">
-                I'm Mark Motol -- I build fast, reliable software
-                <br />
-                that goes from idea to production -- <span className="font-bold text-white">and actually ships.</span>
+                I'm Mark Motol. I build fast, reliable software that goes from idea to
+                production <span className="font-bold text-white">and actually ships.</span>
               </p>
 
               <div className="animate-fade-up-delay-3 mt-6 flex flex-wrap items-center gap-4 sm:gap-6 lg:mt-8">
                 <Magnetic>
                   <a
                     href="#projects"
-                    className="group flex items-center gap-2 bg-black px-5 py-3 font-inter text-[11px] uppercase tracking-widest text-white transition hover:bg-neutral-900 sm:px-7 sm:py-4 sm:text-xs"
+                    className="group flex items-center gap-2 bg-white px-5 py-3 font-inter text-[11px] uppercase tracking-widest text-black transition hover:bg-neutral-200 sm:px-7 sm:py-4 sm:text-xs"
                   >
                     See My Work
                     <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                   </a>
                 </Magnetic>
 
-                <div className="hidden items-center gap-3 sm:flex">
-                  <Award className="h-8 w-8 text-white/50" />
-                  <div className="font-inter text-xs uppercase tracking-wider text-white/60">
-                    <div>Full-Stack</div>
-                    <div>Developer</div>
-                  </div>
-                </div>
+                <a
+                  href={LINKEDIN}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 border border-white/30 px-5 py-3 font-inter text-[11px] uppercase tracking-widest text-white transition hover:border-white/60 hover:bg-white/10 sm:px-7 sm:py-4 sm:text-xs"
+                >
+                  LinkedIn
+                  <Linkedin className="h-4 w-4" />
+                </a>
               </div>
 
               <div className="animate-fade-up-delay-4 mt-6 flex flex-wrap gap-6 sm:mt-8 sm:gap-12 lg:mt-10 lg:gap-16">
                 {[
-                  { value: '3+', label: 'Apps Shipped' },
-                  { value: '3', label: 'Degrees Earned' },
-                  { value: '100%', label: 'Freelance' },
+                  { value: '5+', label: 'Apps Shipped' },
+                  { value: '11 yrs', label: 'Project Coordination' },
+                  { value: 'Freelance', label: 'Developer & Financial Advisor' },
                 ].map((stat) => (
                   <div key={stat.label}>
                     <div className="font-inter text-xl font-bold tracking-tight text-white sm:text-3xl lg:text-4xl">
                       {stat.value}
                     </div>
-                    <div className="mt-1 font-inter text-[9px] uppercase tracking-widest text-white/50 sm:text-xs">
+                    <div className="mt-1 font-inter text-[10px] uppercase tracking-widest text-white/60 sm:text-xs">
                       {stat.label}
                     </div>
                   </div>
@@ -234,12 +253,88 @@ function App() {
         </div>
 
         <a
-          href="#about"
-          aria-label="Scroll to About section"
+          href="#projects"
+          aria-label="Scroll to Projects section"
           className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2 animate-bounce text-white/40 transition hover:text-white/70"
         >
           <ChevronDown className="h-6 w-6" />
         </a>
+      </section>
+
+      <section id="projects" className="border-t border-white/10 px-6 py-24 sm:px-10 sm:py-32 lg:px-16 lg:py-40">
+        <div className="mx-auto max-w-6xl">
+          <Reveal>
+            <Kicker>Projects</Kicker>
+          </Reveal>
+          <Reveal delay={100}>
+            <h2 className="mt-4 font-podium text-4xl font-bold uppercase leading-[0.95] tracking-tight text-white sm:text-5xl lg:text-6xl">
+              Selected Work
+            </h2>
+          </Reveal>
+
+          <div className="mt-12 border-t border-white/10">
+            {PROJECTS.map((project, i) => {
+              const Icon = project.icon
+              const rowClass =
+                'group relative flex flex-col gap-6 overflow-hidden border-b border-white/10 py-8 sm:flex-row sm:items-center sm:gap-8 sm:py-10'
+
+              const inner = (
+                <>
+                  <span className="pointer-events-none absolute inset-0 -z-10 origin-left scale-x-0 bg-white/[0.04] transition-transform duration-500 ease-out group-hover:scale-x-100" />
+
+                  <div className="flex items-center gap-6">
+                    <span className="flex h-12 w-12 shrink-0 items-center justify-center border border-white/10 text-white/40 transition-colors duration-500 group-hover:border-white/30 group-hover:text-white">
+                      <Icon className="h-5 w-5" />
+                    </span>
+                    <span className="font-inter text-sm text-white/50">
+                      {String(i + 1).padStart(2, '0')}
+                    </span>
+                  </div>
+
+                  <div className="flex-1">
+                    <h3 className="font-podium text-2xl font-bold uppercase tracking-tight text-white sm:text-3xl lg:text-4xl">
+                      {project.title}
+                    </h3>
+                    <p className="mt-2 font-inter text-xs uppercase tracking-widest text-white/60">
+                      {project.subtitle}
+                    </p>
+                    <p className="mt-3 max-w-xl font-inter text-sm leading-relaxed text-white/70">
+                      {project.description}
+                    </p>
+                  </div>
+
+                  <div className="flex items-center gap-2 font-inter text-xs uppercase tracking-widest text-white/70 sm:flex-col sm:items-end sm:text-right">
+                    {project.link ? (
+                      <>
+                        Visit Project
+                        <ArrowUpRight className="h-5 w-5 transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1" />
+                      </>
+                    ) : (
+                      <span className="text-white/40">Academic Project</span>
+                    )}
+                  </div>
+                </>
+              )
+
+              return (
+                <Reveal key={project.title} delay={i * 120}>
+                  {project.link ? (
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`${rowClass} cursor-pointer`}
+                    >
+                      {inner}
+                    </a>
+                  ) : (
+                    <div className={rowClass}>{inner}</div>
+                  )}
+                </Reveal>
+              )
+            })}
+          </div>
+        </div>
       </section>
 
       <section id="about" className="relative border-t border-white/10 px-6 py-24 sm:px-10 sm:py-32 lg:px-16 lg:py-40">
@@ -249,19 +344,50 @@ function App() {
           </Reveal>
           <Reveal delay={100}>
             <h2 className="mt-4 font-podium text-4xl font-bold uppercase leading-[0.95] tracking-tight text-white sm:text-5xl lg:text-6xl">
-              Developer &amp; Social Worker
+              Software With Real-World Context
             </h2>
           </Reveal>
           <Reveal delay={200}>
             <p className="mt-6 max-w-2xl font-inter text-base leading-relaxed text-white/70 sm:text-lg">
-              I'm Mark Motol, a freelance full-stack developer with a background in social
-              work -- a combination that shapes how I build. From an AI report generator for
-              social workers to livelihood monitoring and referral tracking systems, I build
-              software that actually fits how caseworkers and field teams operate. I hold a
-              Bachelor of Science in Information Technology (Major in Programming), a Master
-              of Science in Information Technology, and a Master of Social Work.
+              I'm Mark Motol, a freelance full-stack developer and financial advisor. Before
+              building software, I spent 11 years coordinating community development projects,
+              working side by side with field teams, local partners and families. That
+              experience shapes how I build: tools like referral tracking systems and workflow
+              automations that fit how real teams actually work. I hold a Bachelor of Science
+              in Information Technology (Major in Programming) and a Master of Science in
+              Information Technology, and I have completed a Master of Social Work (graduating
+              February 2027).
             </p>
           </Reveal>
+        </div>
+      </section>
+
+      <section id="experience" className="border-t border-white/10 px-6 py-24 sm:px-10 sm:py-32 lg:px-16 lg:py-40">
+        <div className="mx-auto max-w-5xl">
+          <Reveal>
+            <Kicker>Experience</Kicker>
+          </Reveal>
+          <Reveal delay={100}>
+            <h2 className="mt-4 font-podium text-4xl font-bold uppercase leading-[0.95] tracking-tight text-white sm:text-5xl lg:text-6xl">
+              Where I've Worked
+            </h2>
+          </Reveal>
+
+          <div className="mt-12 border-t border-white/10">
+            {EXPERIENCE.map((job, i) => (
+              <Reveal key={job.role} delay={200 + i * 100}>
+                <div className="flex flex-col gap-2 border-b border-white/10 py-6 sm:flex-row sm:gap-10 sm:py-8">
+                  <div className="font-inter text-xs uppercase tracking-widest text-white/60 sm:w-40 sm:shrink-0 sm:pt-1">
+                    {job.period}
+                  </div>
+                  <div>
+                    <h3 className="font-inter text-lg font-semibold text-white">{job.role}</h3>
+                    <p className="mt-2 max-w-2xl font-inter text-sm leading-relaxed text-white/70">{job.detail}</p>
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -279,7 +405,7 @@ function App() {
           <div className="mt-12 grid gap-10 sm:grid-cols-3">
             {STACK.map((group, i) => (
               <Reveal key={group.category} delay={200 + i * 120}>
-                <h3 className="font-inter text-xs uppercase tracking-widest text-white/40">
+                <h3 className="font-inter text-xs uppercase tracking-widest text-white/60">
                   {group.category}
                 </h3>
                 <div className="mt-4 flex flex-wrap gap-2">
@@ -321,87 +447,11 @@ function App() {
                     {edu.degree}
                   </h3>
                   {edu.detail && (
-                    <p className="relative mt-1 font-inter text-sm text-white/50">{edu.detail}</p>
+                    <p className="relative mt-1 font-inter text-sm text-white/60">{edu.detail}</p>
                   )}
                 </div>
               </Reveal>
             ))}
-          </div>
-        </div>
-      </section>
-
-      <section id="projects" className="border-t border-white/10 px-6 py-24 sm:px-10 sm:py-32 lg:px-16 lg:py-40">
-        <div className="mx-auto max-w-6xl">
-          <Reveal>
-            <Kicker>Projects</Kicker>
-          </Reveal>
-          <Reveal delay={100}>
-            <h2 className="mt-4 font-podium text-4xl font-bold uppercase leading-[0.95] tracking-tight text-white sm:text-5xl lg:text-6xl">
-              Selected Work
-            </h2>
-          </Reveal>
-
-          <div className="mt-12 border-t border-white/10">
-            {PROJECTS.map((project, i) => {
-              const Icon = project.icon
-              const rowClass =
-                'group relative flex flex-col gap-6 overflow-hidden border-b border-white/10 py-8 sm:flex-row sm:items-center sm:gap-8 sm:py-10'
-
-              const inner = (
-                <>
-                  <span className="pointer-events-none absolute inset-0 -z-10 origin-left scale-x-0 bg-white/[0.04] transition-transform duration-500 ease-out group-hover:scale-x-100" />
-
-                  <div className="flex items-center gap-6">
-                    <span className="flex h-12 w-12 shrink-0 items-center justify-center border border-white/10 text-white/40 transition-colors duration-500 group-hover:border-white/30 group-hover:text-white">
-                      <Icon className="h-5 w-5" />
-                    </span>
-                    <span className="font-inter text-sm text-white/30">
-                      {String(i + 1).padStart(2, '0')}
-                    </span>
-                  </div>
-
-                  <div className="flex-1">
-                    <h3 className="font-podium text-2xl font-bold uppercase tracking-tight text-white sm:text-3xl lg:text-4xl">
-                      {project.title}
-                    </h3>
-                    <p className="mt-2 font-inter text-xs uppercase tracking-widest text-white/40">
-                      {project.subtitle}
-                    </p>
-                    <p className="mt-3 max-w-xl font-inter text-sm leading-relaxed text-white/60">
-                      {project.description}
-                    </p>
-                  </div>
-
-                  <div className="flex items-center gap-2 font-inter text-xs uppercase tracking-widest text-white/70 sm:flex-col sm:items-end sm:text-right">
-                    {project.link ? (
-                      <>
-                        Visit Project
-                        <ArrowUpRight className="h-5 w-5 transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1" />
-                      </>
-                    ) : (
-                      <span className="text-white/40">Academic Project</span>
-                    )}
-                  </div>
-                </>
-              )
-
-              return (
-                <Reveal key={project.title} delay={i * 120}>
-                  {project.link ? (
-                    <a
-                      href={project.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`${rowClass} cursor-pointer`}
-                    >
-                      {inner}
-                    </a>
-                  ) : (
-                    <div className={rowClass}>{inner}</div>
-                  )}
-                </Reveal>
-              )
-            })}
           </div>
         </div>
       </section>
@@ -422,7 +472,7 @@ function App() {
               discussing new ideas.
             </p>
           </Reveal>
-          <Reveal delay={300} className="mt-8 flex justify-center">
+          <Reveal delay={300} className="mt-8 flex flex-wrap justify-center gap-4">
             <Magnetic>
               <a
                 href="mailto:mjcmotol@gmail.com"
@@ -432,11 +482,22 @@ function App() {
                 <Mail className="h-4 w-4" />
               </a>
             </Magnetic>
+            <Magnetic>
+              <a
+                href={LINKEDIN}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 border border-white/30 px-7 py-4 font-inter text-xs uppercase tracking-widest text-white transition hover:border-white/60 hover:bg-white/10"
+              >
+                LinkedIn
+                <Linkedin className="h-4 w-4" />
+              </a>
+            </Magnetic>
           </Reveal>
         </div>
       </section>
 
-      <footer className="border-t border-white/10 px-6 py-8 text-center font-inter text-xs text-white/40 sm:px-10 lg:px-16">
+      <footer className="border-t border-white/10 px-6 py-8 text-center font-inter text-xs text-white/60 sm:px-10 lg:px-16">
         © {new Date().getFullYear()} Mark Motol. All rights reserved.
       </footer>
 
