@@ -1,12 +1,14 @@
 import { useState } from 'react'
 import {
   ArrowUpRight,
+  Briefcase,
   Car,
   ChevronDown,
   ClipboardList,
   Code2,
   GraduationCap,
   Mail,
+  MapPin,
   Receipt,
   X,
 } from 'lucide-react'
@@ -93,12 +95,28 @@ const EXPERIENCE = [
 
 const PROJECTS = [
   {
+    icon: Briefcase,
+    title: 'CSR AI',
+    subtitle: 'AI case report generator for social workers',
+    description:
+      'An AI-powered platform that turns raw field notes into agency-ready social work reports — SCSRs, case progress reports, and DSWD/4Ps-compliant documentation — with trauma-informed language built in.',
+    link: 'https://csrai.co',
+  },
+  {
+    icon: MapPin,
+    title: 'Smart Livelihood Monitoring Platform',
+    subtitle: 'with Geographic Information System Integration',
+    description:
+      'A GIS-powered platform for tracking, mapping, and managing livelihood programs across communities.',
+    link: null,
+  },
+  {
     icon: Car,
     title: 'Sakay App',
     subtitle: 'SafeTrike ride-hailing platform',
     description:
       'A tricycle ride-hailing app connecting commuters with drivers for safer, more convenient trips.',
-    link: 'https://safetrike-2e135.web.app/',
+    link: 'https://safetrike-app.vercel.app/',
   },
   {
     icon: Receipt,
@@ -352,8 +370,9 @@ function App() {
               I'm Mark Motol, a freelance full-stack developer and financial advisor. Before
               building software, I spent 11 years coordinating community development projects,
               working side by side with field teams, local partners and families. That
-              experience shapes how I build: tools like referral tracking systems and workflow
-              automations that fit how real teams actually work. I hold a Bachelor of Science
+              experience shapes how I build: from an AI case report generator for social workers
+              to GIS livelihood monitoring and referral tracking systems, I make tools that fit
+              how real teams actually work. I hold a Bachelor of Science
               in Information Technology (Major in Programming) and a Master of Science in
               Information Technology, and I have completed a Master of Social Work (graduating
               February 2027).
