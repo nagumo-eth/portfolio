@@ -71,7 +71,7 @@ const EDUCATION = [
 const EXPERIENCE = [
   {
     role: 'Freelance Full-Stack Developer',
-    period: '2026 – Present',
+    period: '2024 – Present',
     detail:
       'Design, build and deploy web apps and automations end to end, from React and Supabase apps to n8n workflows with AI document processing.',
   },
