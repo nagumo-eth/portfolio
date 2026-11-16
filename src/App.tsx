@@ -41,15 +41,19 @@ const NAV_LINKS = [
 const STACK = [
   {
     category: 'Frontend',
-    items: ['React', 'TypeScript', 'Vite', 'Tailwind CSS'],
+    items: ['React', 'TypeScript', 'JavaScript', 'Vite', 'Tailwind CSS', 'Leaflet / OpenStreetMap', 'PWA'],
   },
   {
-    category: 'Backend',
-    items: ['Node.js', 'PHP', 'Laravel', 'Supabase', 'MySQL', 'OpenAI Whisper API', 'Claude API', 'n8n'],
+    category: 'Backend & Data',
+    items: ['Node.js', 'Vercel Serverless Functions', 'Supabase (Auth, Realtime)', 'PostgreSQL', 'MySQL', 'PHP', 'Laravel', 'Firebase', 'Python'],
   },
   {
-    category: 'Infrastructure',
-    items: ['Vercel (CI/CD)', 'Auth (Clerk / Supabase)', 'PayPal', 'Google Workspace APIs'],
+    category: 'AI & Automation',
+    items: ['Claude API', 'Google Gemini API', 'OpenAI Whisper API', 'n8n', 'Telegram Bot API', 'Google Workspace APIs', 'Slack API'],
+  },
+  {
+    category: 'Infrastructure & Services',
+    items: ['Vercel (CI/CD)', 'Docker', 'Git / GitHub', 'Clerk', 'Resend', 'PayPal', 'Word / PDF generation'],
   },
 ]
 
@@ -113,9 +117,9 @@ const PROJECTS = [
   {
     icon: Car,
     title: 'Sakay App',
-    subtitle: 'SafeTrike ride-hailing platform',
+    subtitle: 'SafeTrike tricycle booking & safety app',
     description:
-      'A tricycle ride-hailing app connecting commuters with drivers for safer, more convenient trips.',
+      'A tricycle booking app built for student safety, with five roles (student, parent, driver, guard, admin), live GPS route tracking, geofence alerts at the school gate, dynamic ETAs, QR/OTP ride verification and trip history. Built with React, Supabase Realtime and Leaflet.',
     link: 'https://safetrike-app.vercel.app/',
   },
   {
@@ -421,7 +425,7 @@ function App() {
             </h2>
           </Reveal>
 
-          <div className="mt-12 grid gap-10 sm:grid-cols-3">
+          <div className="mt-12 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
             {STACK.map((group, i) => (
               <Reveal key={group.category} delay={200 + i * 120}>
                 <h3 className="font-inter text-xs uppercase tracking-widest text-white/60">
